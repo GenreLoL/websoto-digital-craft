@@ -30,17 +30,17 @@ const Contact = () => {
     {
       icon: <Mail className="w-5 h-5" />,
       title: "Email",
-      content: "hello@websoto.com",
+      content: "websoto.studio@gmail.com",
     },
     {
       icon: <Phone className="w-5 h-5" />,
       title: "Phone",
-      content: "+1 (555) 123-4567",
+      content: "+1 601-357-6414",
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       title: "Location",
-      content: "Tech City, TC",
+      content: "Houston, TX",
     },
   ];
 
@@ -143,7 +143,7 @@ const Contact = () => {
               {[
                 {
                   q: "How long does a project take?",
-                  a: "Most projects take 4-8 weeks depending on complexity. We'll provide a detailed timeline during consultation.",
+                  a: "Most projects take 1-4 weeks depending on complexity. We'll provide a detailed timeline during consultation.",
                 },
                 {
                   q: "What is your pricing?",
