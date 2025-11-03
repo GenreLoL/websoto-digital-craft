@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Code, Palette, ShoppingCart, Wrench } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const Services = () => {
   const mainServices = [
@@ -39,6 +40,11 @@ const Services = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Web Design & Development Services - WebSoto"
+        description="Comprehensive web solutions: custom design, development, e-commerce, and maintenance. Professional digital services tailored to your business needs."
+        keywords="web design services, web development, e-commerce solutions, website maintenance, CMS integration, custom applications"
+      />
       <Header />
 
       {/* Hero Section */}

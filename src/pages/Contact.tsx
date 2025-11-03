@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -46,6 +47,11 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Contact Us - WebSoto Web Design & Development"
+        description="Get in touch with WebSoto. Let's discuss your project and create something exceptional together. Email, phone, and location in Houston, TX."
+        keywords="contact WebSoto, get quote, web design inquiry, Houston web agency contact, project consultation"
+      />
       <Header />
 
       {/* Hero */}

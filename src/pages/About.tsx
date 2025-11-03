@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, Users, Target, Heart } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const About = () => {
   const team = [
@@ -42,6 +43,11 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="About WebSoto - Our Story & Team"
+        description="Learn about WebSoto, a digital studio founded by Erik and Sebastian King. We create sleek, high-performance websites for modern brands in Houston, TX."
+        keywords="about WebSoto, web design team, Houston digital agency, Erik King, Sebastian King"
+      />
       <Header />
 
       {/* Hero */}
@@ -78,7 +84,8 @@ const About = () => {
             <div>
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
-                alt="Team"
+                alt="Team collaboration"
+                loading="lazy"
                 className="rounded"
               />
             </div>

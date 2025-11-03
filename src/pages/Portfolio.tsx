@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 const Portfolio = () => {
   const projects = [
@@ -59,6 +60,11 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Portfolio - WebSoto Projects & Success Stories"
+        description="Explore WebSoto's portfolio of successful web design and development projects. See how we've helped businesses grow with custom digital solutions."
+        keywords="web design portfolio, development projects, case studies, client success stories, WebSoto work"
+      />
       <Header />
 
       {/* Hero */}
@@ -83,6 +89,7 @@ const Portfolio = () => {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-smooth group-hover:scale-105"
                   />
                 </div>

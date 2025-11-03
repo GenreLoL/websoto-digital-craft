@@ -59,6 +59,16 @@ const Footer = () => {
                   About
                 </Link>
               </li>
+              <li>
+                <Link to="/contact" className="text-sm text-muted-foreground hover:text-accent transition-smooth">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link to="/support" className="text-sm text-muted-foreground hover:text-accent transition-smooth">
+                  Support
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -100,11 +110,14 @@ const Footer = () => {
               © {currentYear} WebSoto. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <Link to="#" className="text-sm text-muted-foreground hover:text-accent transition-smooth">
+              <Link to="/privacy-policy" className="text-sm text-muted-foreground hover:text-accent transition-smooth">
                 Privacy
               </Link>
-              <Link to="#" className="text-sm text-muted-foreground hover:text-accent transition-smooth">
+              <Link to="/terms" className="text-sm text-muted-foreground hover:text-accent transition-smooth">
                 Terms
+              </Link>
+              <Link to="/support" className="text-sm text-muted-foreground hover:text-accent transition-smooth">
+                Support
               </Link>
             </div>
           </div>

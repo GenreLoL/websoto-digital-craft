@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Code, Palette, ShoppingCart, Wrench, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-dark.jpg";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   const services = [
@@ -39,6 +40,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="WebSoto - Custom Website Design & Development Agency"
+        description="Transform your digital presence with custom web solutions designed for growth. Professional web design, development, e-commerce, and maintenance services in Houston, TX."
+        keywords="web design, web development, e-commerce solutions, custom websites, digital agency, Houston web design, responsive design"
+      />
       <Header />
 
       {/* Hero Section */}
