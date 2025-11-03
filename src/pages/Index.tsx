@@ -104,7 +104,7 @@ const Index = () => {
     { number: "85+", label: "Projects Delivered" },
     { number: "98%", label: "Client Satisfaction" },
     { number: "15+", label: "Active Clients" },
-    { number: "3+", label: "Years Experience" },
+    { number: "3+", label: "Months Experience" },
   ];
 
   return (
