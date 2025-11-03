@@ -10,14 +10,10 @@ const About = () => {
     {
       name: "Erik King",
       role: "Founder & Lead Developer",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
     },
     {
       name: "Sebastian King",
       role: "Co-Founder & Designer",
-      image:
-        "https://images.unsplash.com/photo-1603415526960-f7e0328a58f6?w=400&h=400&fit=crop",
     },
   ];
 
@@ -109,16 +105,9 @@ const About = () => {
             <h2 className="text-3xl font-bold mb-12">Our Team</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {team.map((member, index) => (
-                <Card key={index} className="overflow-hidden bg-card border-border">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-64 object-cover"
-                  />
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-bold mb-1">{member.name}</h3>
-                    <p className="text-sm text-accent">{member.role}</p>
-                  </CardContent>
+                <Card key={index} className="bg-card border-border p-6 text-center">
+                  <h3 className="text-lg font-bold mb-1">{member.name}</h3>
+                  <p className="text-sm text-accent">{member.role}</p>
                 </Card>
               ))}
             </div>
