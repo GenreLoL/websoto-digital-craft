@@ -67,7 +67,7 @@ const About = () => {
   const stats = [
     { icon: <TrendingUp className="w-6 h-6" />, value: "100+", label: "Projects Delivered" },
     { icon: <Users2 className="w-6 h-6" />, value: "50+", label: "Happy Clients" },
-    { icon: <Sparkles className="w-6 h-6" />, value: "2+", label: "Years Experience" },
+    { icon: <Sparkles className="w-6 h-6" />, value: "3+", label: "Months Experience" },
   ];
 
   return (
