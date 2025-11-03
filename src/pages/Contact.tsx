@@ -14,10 +14,13 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   
   const heroRef = useRef(null);
   const formRef = useRef(null);
@@ -27,15 +30,77 @@ const Contact = () => {
   const formInView = useInView(formRef, { once: true, margin: "-100px" });
   const infoInView = useInView(infoRef, { once: true, margin: "-100px" });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    toast.success("Message sent! We'll get back to you soon.");
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
     
-    setTimeout(() => {
-      setFormData({ name: "", email: "", message: "" });
-      setIsSubmitted(false);
-    }, 3000);
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Invalid email address";
+    }
+    
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      toast.error("Please fill in all fields correctly");
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
+      
+      setIsSubmitted(true);
+      toast.success("Message sent successfully! We'll get back to you soon.");
+      
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setErrors({});
+      }, 3000);
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -223,7 +288,7 @@ const Contact = () => {
                       </p>
                     </motion.div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-8">
+                  <form onSubmit={handleSubmit} className="space-y-8">
                       <div className="space-y-6">
                         {/* Name Field */}
                         <div className="relative">
@@ -249,8 +314,19 @@ const Contact = () => {
                             onFocus={() => setFocusedField("name")}
                             onBlur={() => setFocusedField(null)}
                             required
-                            className="bg-transparent border-0 border-b-2 border-border rounded-none px-0 pt-6 pb-2 focus-visible:ring-0 focus-visible:border-accent transition-smooth"
+                            className={`bg-transparent border-0 border-b-2 rounded-none px-0 pt-6 pb-2 focus-visible:ring-0 focus-visible:border-accent transition-smooth ${
+                              errors.name ? "border-red-500" : "border-border"
+                            }`}
                           />
+                          {errors.name && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="text-sm text-red-500 mt-1"
+                            >
+                              {errors.name}
+                            </motion.p>
+                          )}
                         </div>
 
                         {/* Email Field */}
@@ -277,8 +353,58 @@ const Contact = () => {
                             onFocus={() => setFocusedField("email")}
                             onBlur={() => setFocusedField(null)}
                             required
-                            className="bg-transparent border-0 border-b-2 border-border rounded-none px-0 pt-6 pb-2 focus-visible:ring-0 focus-visible:border-accent transition-smooth"
+                            className={`bg-transparent border-0 border-b-2 rounded-none px-0 pt-6 pb-2 focus-visible:ring-0 focus-visible:border-accent transition-smooth ${
+                              errors.email ? "border-red-500" : "border-border"
+                            }`}
                           />
+                          {errors.email && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="text-sm text-red-500 mt-1"
+                            >
+                              {errors.email}
+                            </motion.p>
+                          )}
+                        </div>
+
+                        {/* Subject Field */}
+                        <div className="relative">
+                          <motion.label
+                            htmlFor="subject"
+                            initial={false}
+                            animate={{
+                              y: focusedField === "subject" || formData.subject ? -24 : 0,
+                              scale: focusedField === "subject" || formData.subject ? 0.85 : 1,
+                              color: focusedField === "subject" ? "hsl(var(--accent))" : "hsl(var(--muted-foreground))"
+                            }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute left-0 top-3 font-medium pointer-events-none origin-left"
+                          >
+                            Subject
+                          </motion.label>
+                          <Input
+                            id="subject"
+                            name="subject"
+                            type="text"
+                            value={formData.subject}
+                            onChange={handleChange}
+                            onFocus={() => setFocusedField("subject")}
+                            onBlur={() => setFocusedField(null)}
+                            required
+                            className={`bg-transparent border-0 border-b-2 rounded-none px-0 pt-6 pb-2 focus-visible:ring-0 focus-visible:border-accent transition-smooth ${
+                              errors.subject ? "border-red-500" : "border-border"
+                            }`}
+                          />
+                          {errors.subject && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="text-sm text-red-500 mt-1"
+                            >
+                              {errors.subject}
+                            </motion.p>
+                          )}
                         </div>
 
                         {/* Message Field */}
@@ -305,8 +431,19 @@ const Contact = () => {
                             onFocus={() => setFocusedField("message")}
                             onBlur={() => setFocusedField(null)}
                             required
-                            className="bg-transparent border-0 border-b-2 border-border rounded-none px-0 pt-6 pb-2 focus-visible:ring-0 focus-visible:border-accent transition-smooth resize-none"
+                            className={`bg-transparent border-0 border-b-2 rounded-none px-0 pt-6 pb-2 focus-visible:ring-0 focus-visible:border-accent transition-smooth resize-none ${
+                              errors.message ? "border-red-500" : "border-border"
+                            }`}
                           />
+                          {errors.message && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="text-sm text-red-500 mt-1"
+                            >
+                              {errors.message}
+                            </motion.p>
+                          )}
                         </div>
                       </div>
 
@@ -314,10 +451,24 @@ const Contact = () => {
                         <Button
                           type="submit"
                           size="lg"
+                          disabled={isSubmitting}
                           className="w-full bg-accent text-accent-foreground hover:bg-accent/90 shadow-accent group"
                         >
-                          <span>Send Message</span>
-                          <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-smooth" />
+                          {isSubmitting ? (
+                            <>
+                              <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
+                              />
+                              Sending...
+                            </>
+                          ) : (
+                            <>
+                              <span>Send Message</span>
+                              <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-smooth" />
+                            </>
+                          )}
                         </Button>
                       </motion.div>
                     </form>
