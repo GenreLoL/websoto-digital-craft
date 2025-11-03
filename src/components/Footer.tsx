@@ -29,7 +29,7 @@ const Footer = () => {
               <a href="#" className="text-muted-foreground hover:text-accent transition-smooth" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-accent transition-smooth" aria-label="Instagram">
+              <a href="https://www.instagram.com/websoto/" className="text-muted-foreground hover:text-accent transition-smooth" aria-label="Instagram">
                 <Instagram size={18} />
               </a>
             </div>
