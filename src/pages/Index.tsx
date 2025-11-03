@@ -31,10 +31,10 @@ const Index = () => {
   ];
 
   const stats = [
-    { number: "200+", label: "Projects" },
+    { number: "85+", label: "Projects" },
     { number: "98%", label: "Satisfaction" },
-    { number: "50+", label: "Clients" },
-    { number: "5+", label: "Years" },
+    { number: "15+", label: "Clients" },
+    { number: "3+", label: "Months" },
   ];
 
   return (
