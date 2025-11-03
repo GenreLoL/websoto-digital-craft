@@ -8,24 +8,16 @@ import { Award, Users, Target, Heart } from "lucide-react";
 const About = () => {
   const team = [
     {
-      name: "Alex Rivera",
-      role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      name: "Erik King",
+      role: "Founder & Lead Developer",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
     },
     {
-      name: "Sarah Chen",
-      role: "Lead Designer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-    },
-    {
-      name: "Marcus Johnson",
-      role: "Senior Developer",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-    },
-    {
-      name: "Emma Thompson",
-      role: "Project Manager",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+      name: "Sebastian King",
+      role: "Co-Founder & Designer",
+      image:
+        "https://images.unsplash.com/photo-1603415526960-f7e0328a58f6?w=400&h=400&fit=crop",
     },
   ];
 
@@ -33,22 +25,22 @@ const About = () => {
     {
       icon: <Award className="w-8 h-8" />,
       title: "Excellence",
-      description: "High-quality solutions that exceed expectations",
+      description: "Delivering clean, professional, and impactful websites every time.",
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "Collaboration",
-      description: "Working closely as partners with our clients",
+      description: "We work closely with our clients to bring their vision to life.",
     },
     {
       icon: <Target className="w-8 h-8" />,
       title: "Innovation",
-      description: "Using latest technologies for cutting-edge solutions",
+      description: "Modern tools, creative ideas, and efficient development.",
     },
     {
       icon: <Heart className="w-8 h-8" />,
       title: "Passion",
-      description: "Love for what we do shows in quality and care",
+      description: "We love building digital experiences that stand out.",
     },
   ];
 
@@ -62,7 +54,7 @@ const About = () => {
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">About WebSoto</h1>
             <p className="text-xl text-muted-foreground">
-              Passionate designers and developers creating exceptional web experiences
+              A small team with a big vision — creating next-level websites for modern brands.
             </p>
           </div>
         </div>
@@ -76,13 +68,14 @@ const About = () => {
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Founded in 2019 with a mission to help businesses succeed online through beautiful, functional websites.
+                  WebSoto was founded by cousins <strong>Erik</strong> and <strong>Sebastian King</strong> in 2025 with the goal of helping businesses
+                  establish a strong, modern online presence through design and development that actually converts.
                 </p>
                 <p>
-                  From a small team to a full-service agency, our core values remain the same. We believe in great design, clean code, and genuine partnerships.
+                  What started as two creatives experimenting with web design turned into a full-fledged digital studio dedicated to creating sleek, high-performance websites tailored to each client.
                 </p>
                 <p>
-                  We've helped over 50 businesses transform their online presence, and we're just getting started.
+                  Every project reflects our belief in great design, clean code, and real connection with our clients.
                 </p>
               </div>
             </div>
@@ -114,7 +107,7 @@ const About = () => {
           {/* Team */}
           <div>
             <h2 className="text-3xl font-bold mb-12">Our Team</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {team.map((member, index) => (
                 <Card key={index} className="overflow-hidden bg-card border-border">
                   <img
@@ -137,13 +130,13 @@ const About = () => {
       <section className="py-24 border-t border-border">
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Let's Work Together
+            Let's Build Something Great
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Ready to start your project? We'd love to hear from you
+            Have a project in mind? Reach out — we’re ready to bring it to life.
           </p>
           <Button asChild size="lg" className="bg-accent text-accent-foreground">
-            <Link to="/contact">Get in Touch</Link>
+            <Link to="/contact">Contact Us</Link>
           </Button>
         </div>
       </section>
