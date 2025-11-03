@@ -29,17 +29,17 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-soft" : "bg-transparent"
+        isScrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center transition-smooth group-hover:scale-110">
-              <span className="text-white font-bold text-xl">W</span>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="w-8 h-8 bg-accent flex items-center justify-center transition-smooth group-hover:opacity-80">
+              <span className="text-accent-foreground font-bold text-lg">W</span>
             </div>
-            <span className="text-2xl font-bold text-foreground">WebSoto</span>
+            <span className="text-xl font-semibold tracking-tight text-foreground">WebSoto</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -48,24 +48,19 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-sm font-medium transition-smooth relative group ${
-                  isActive(item.path) ? "text-accent" : "text-foreground hover:text-accent"
+                className={`text-sm font-medium transition-smooth ${
+                  isActive(item.path) ? "text-accent" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {item.name}
-                <span
-                  className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-smooth group-hover:w-full ${
-                    isActive(item.path) ? "w-full" : ""
-                  }`}
-                />
               </Link>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild className="bg-gradient-primary hover:opacity-90">
-              <Link to="/contact">Get Started</Link>
+            <Button asChild className="bg-accent text-accent-foreground hover:opacity-90">
+              <Link to="/contact">Contact</Link>
             </Button>
           </div>
 
@@ -81,22 +76,22 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 animate-fade-in">
+          <nav className="md:hidden py-4 animate-fade-in border-t border-border">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 className={`block py-3 text-sm font-medium transition-smooth ${
-                  isActive(item.path) ? "text-accent" : "text-foreground hover:text-accent"
+                  isActive(item.path) ? "text-accent" : "text-muted-foreground"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
-            <Button asChild className="w-full mt-4 bg-gradient-primary">
+            <Button asChild className="w-full mt-4 bg-accent text-accent-foreground">
               <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                Get Started
+                Contact
               </Link>
             </Button>
           </nav>
