@@ -143,9 +143,10 @@ const Index = () => {
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:opacity-90 hover-lift text-lg px-8 py-6 h-auto">
                 <Link to="/contact">Start a Project</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="hover-lift text-lg px-8 py-6 h-auto">
+              {/* Hidden - Uncomment to restore Portfolio link */}
+              {/* <Button asChild size="lg" variant="outline" className="hover-lift text-lg px-8 py-6 h-auto">
                 <Link to="/portfolio">Explore Work</Link>
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
@@ -196,8 +197,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section 
+      {/* Portfolio Section - Hidden. Uncomment to restore */}
+      {/* <section 
         id="portfolio"
         ref={portfolioRef}
         className={`py-32 bg-card/30 transition-all duration-1000 ${
@@ -262,7 +263,7 @@ const Index = () => {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Services Section */}
       <section 
