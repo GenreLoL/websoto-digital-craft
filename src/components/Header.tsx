@@ -19,7 +19,7 @@ const Header = () => {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
-    { name: "Portfolio", path: "/portfolio" },
+    // { name: "Portfolio", path: "/portfolio" }, // Hidden - uncomment to restore
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
