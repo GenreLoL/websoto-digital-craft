@@ -49,11 +49,12 @@ const Footer = () => {
                   Services
                 </Link>
               </li>
-              <li>
+              {/* Hidden - Uncomment to restore Portfolio link */}
+              {/* <li>
                 <Link to="/portfolio" className="text-sm text-muted-foreground hover:text-accent transition-smooth">
                   Portfolio
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/about" className="text-sm text-muted-foreground hover:text-accent transition-smooth">
                   About

@@ -44,12 +44,13 @@ const ProjectDetail = () => {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <Button asChild variant="ghost" className="hover:text-accent">
+            {/* Hidden - Uncomment to restore Portfolio link */}
+            {/* <Button asChild variant="ghost" className="hover:text-accent">
               <Link to="/portfolio">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Portfolio
               </Link>
-            </Button>
+            </Button> */}
           </motion.div>
 
           <motion.div
@@ -227,11 +228,12 @@ const ProjectDetail = () => {
                   <Link to="/contact">Get Started</Link>
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              {/* Hidden - Uncomment to restore Portfolio link */}
+              {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button asChild size="lg" variant="outline">
                   <Link to="/portfolio">View More Projects</Link>
                 </Button>
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
         </div>
