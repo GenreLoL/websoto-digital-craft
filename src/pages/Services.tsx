@@ -173,11 +173,12 @@ const Services = () => {
                   <Link to="/contact">Contact Us</Link>
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              {/* Hidden - Uncomment to restore Portfolio link */}
+              {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button asChild size="lg" variant="outline" className="hover:border-accent">
                   <Link to="/portfolio">View Portfolio</Link>
                 </Button>
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
         </div>
